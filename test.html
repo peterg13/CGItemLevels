@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<button id="buttonClick">CLICK ME </button>
+	<script>
+	$("#buttonClick").on("click",function(){
+		$.ajax({
+	    url: 'https://us.api.battle.net/wow/character/darkspear/tankadinn?fields=items&locale=en_US&apikey=ce8c5e2zj8t8q2ebjck9y73usfp2zpt9',
+	    method: "GET"
+		}).done(function(response){
+		    console.log(response.data.items.averageItemLevelEquipped);
+		});
+	})
+	</script>
+</html>
