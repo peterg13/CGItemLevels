@@ -1,0 +1,26 @@
+{
+  "name": "cg_item_levels",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Main.js",
+  "dependencies": {
+    "blizzard.js": "^1.7.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peterg13/CGItemLevels.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peterg13/CGItemLevels/issues"
+  },
+  "homepage": "https://github.com/peterg13/CGItemLevels#readme"
+}
