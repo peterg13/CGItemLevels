@@ -6,6 +6,7 @@ var path = require('path');
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
   getItemLevels(names, realms);
+
 })
 
 app.listen(3000, function () {
@@ -14,7 +15,7 @@ app.listen(3000, function () {
 
 
 var names = ['tankadinn', 'kaol', 'brightsidesh'];
-var realms = ['darkspear', 'darkspear', 'darkspear']
+var realms = ['darkspear', 'darkspear', 'darkspear'];
 
 
 app.get('/getinfo', function(req, res){
@@ -28,10 +29,6 @@ function getItemLevels(names, realms){
 	}
 
 }
-
-
-
-
 
 function characterRequest(charName, charRealm){
 	const blizzard = require('blizzard.js').initialize({ apikey: 'ce8c5e2zj8t8q2ebjck9y73usfp2zpt9'});
