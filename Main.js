@@ -16,6 +16,7 @@ app.listen(3000, function () {
 
 var names = ['tankadinn', 'kaol', 'brightsidesh'];
 var realms = ['darkspear', 'darkspear', 'darkspear'];
+var ilvls = [0, 0, 0];
 
 
 app.get('/getinfo', function(req, res){
@@ -25,17 +26,22 @@ app.get('/getinfo', function(req, res){
 
 function getItemLevels(names, realms){
 	for(i = 0; i < names.length; i++){
-		characterRequest(names[i], realms[i]);
+		characterRequest(names[i], realms[i], function(ilvl){
+			ilvls[i] = ilvl;
+			console.log(i);
+		});
 	}
+
 
 }
 
-function characterRequest(charName, charRealm){
+function characterRequest(charName, charRealm, callback){
 	const blizzard = require('blizzard.js').initialize({ apikey: 'ce8c5e2zj8t8q2ebjck9y73usfp2zpt9'});
 
 	blizzard.wow.character(['items'], { origin: 'us', realm: charRealm, name: charName })
   		.then(response => {
-    	console.log(charName + ': ' + response.data.items.averageItemLevelEquipped);
+    	//console.log(charName + ': ' + response.data.items.averageItemLevelEquipped);
+    	callback(response.data.items.averageItemLevelEquipped);
   });
 }
 
