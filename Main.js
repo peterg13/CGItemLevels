@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var sql = require('mssql');
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', function (req, res) {
