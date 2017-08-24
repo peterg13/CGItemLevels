@@ -5,20 +5,9 @@ var fs = require('fs');
 var $ = jQuery = require('jquery');
 require('jquery-csv');
 
-// respond with "hello world" when a GET request is made to the homepage
+// respond with inde.html when page is loaded
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
-  getItemLevels(names, realms);
-
-  var sample = './ilvlData.csv';
-fs.readFile(sample, 'UTF-8', function(err, csv) {
-  $.csv.toArrays(csv, {}, function(err, data) {
-    for(var i=0, len=data.length; i<len; i++) {
-      console.log(data[i]);
-    }
-  });
-});
-
 })
 
 app.listen(3000, function () {
@@ -30,23 +19,20 @@ var names = ['tankadinn', 'kaol', 'brightsidesh'];
 var realms = ['darkspear', 'darkspear', 'darkspear'];
 var ilvls = [0, 0, 0];
 
+//called when document is ready
+app.get('/pullTable', function(req, res){
+	//pulls up each entry in our csv file and stores it in an array
+	var csvFilePath = './ilvlData.csv';
+	fs.readFile(csvFilePath, 'UTF-8', function(err, csv) {
+		$.csv.toArrays(csv, {}, function(err, data) {
+		//each line in data[] is an entry
 
+    	});
+  	});
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.get('/getinfo', function(req, res){
-	console.log('getinfo');
+app.get('/update', function(req, res){
+	console.log('update');
 })
 
 
@@ -63,7 +49,7 @@ function characterRequest(charName, charRealm){
 	blizzard.wow.character(['items'], { origin: 'us', realm: charRealm, name: charName })
   		.then(response => {
     	//console.log(charName + ': ' + response.data.items.averageItemLevelEquipped);
-    	callback(response.data.items.averageItemLevelEquipped);
+    	console.log('reponse: ' + charName + ': ' + response.data.items.averageItemLevelEquipped);
   });
 }
 

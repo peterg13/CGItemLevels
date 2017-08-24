@@ -4,15 +4,19 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-	<button id="myButton"> button </button>
+	<button id="updateButton"> update </button>
 	<script>
-	$("#myButton").on("click",function(){
+	$("#updateButton").on("click",function(){
 		$.ajax({
-			url: '/getinfo',
+			url: '/update',
 		});
 	})
 	</script>
-	<script src="Main.js" ></script>
+	<script>$( document ).ready(function() {
+    $.ajax({
+			url: '/pullTable',
+		});
+});</script>
 
 	
 </html>
