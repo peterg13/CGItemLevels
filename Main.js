@@ -56,11 +56,20 @@ app.get('/update', function(req, res){
 				var element = elem.toString().split(',');
 				//gets the character and returns the ilvl
 				characterRequest(element[0], element[1], function(ilvl){
-					console.log(ilvl);
+					data[key][2] = ilvl;
+					
+
+
+
+
+
 					callback();
 				});
 				
 			}, function(err){
+				$.csv.fromArrays(data, {}, function(err, newData){
+						fs.writeFile('./ilvlData.csv', newData, function(){});
+					});
 				res.send('updated');
 			});
     	});
@@ -87,7 +96,7 @@ var characterRequest = function(charName, charRealm, callback){
   		.then(response => {
     	//console.log(charName + ': ' + response.data.items.averageItemLevelEquipped);
     	//console.log('reponse: ' + charName + ': ' + response.data.items.averageItemLevelEquipped);
-    	callback(response.data.items.averageItemLevelEquipped);
+    	callback(response.data.items.averageItemLevel);
     	
   });
 }
