@@ -4,6 +4,7 @@ var path = require('path');
 var fs = require('fs');
 var $ = jQuery = require('jquery');
 require('jquery-csv');
+var async=require("async");
 
 // respond with inde.html when page is loaded
 app.get('/', function (req, res) {
@@ -51,18 +52,17 @@ app.get('/update', function(req, res){
 	fs.readFile(csvFilePath, 'UTF-8', function(err, csv) {
 		$.csv.toArrays(csv, {}, function(err, data) {
 			//each line in data[] is an entry
-			var entries = data.length;
-			var completed = 0;
-			for(i = 0; i < entries; i++){
-				var element = data[i].toString().split(',');
-				characterRequest(element[0], element[1]).then(response => {
-					completed++;
+			async.forEachOf(data, function(elem, key, callback){
+				var element = elem.toString().split(',');
+				//gets the character and returns the ilvl
+				characterRequest(element[0], element[1], function(ilvl){
+					console.log(ilvl);
+					callback();
 				});
-			}
-			while(completed < entries){
 				
-			}
-			res.send('updated');
+			}, function(err){
+				res.send('updated');
+			});
     	});
   	});
 
@@ -80,14 +80,14 @@ function getItemLevels(names, realms){
 	}
 
 
-var characterRequest = function(charName, charRealm){
+var characterRequest = function(charName, charRealm, callback){
 	const blizzard = require('blizzard.js').initialize({ apikey: 'ce8c5e2zj8t8q2ebjck9y73usfp2zpt9'});
 
 	blizzard.wow.character(['items'], { origin: 'us', realm: charRealm, name: charName })
   		.then(response => {
     	//console.log(charName + ': ' + response.data.items.averageItemLevelEquipped);
     	//console.log('reponse: ' + charName + ': ' + response.data.items.averageItemLevelEquipped);
-    	return 10;
+    	callback(response.data.items.averageItemLevelEquipped);
     	
   });
 }
