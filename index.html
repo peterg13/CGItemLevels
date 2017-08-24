@@ -9,6 +9,9 @@
 	$("#updateButton").on("click",function(){
 		$.ajax({
 			url: '/update',
+			method: 'GET',
+		}).done(function(response){
+			console.log(response);
 		});
 	})
 	</script>
