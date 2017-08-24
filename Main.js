@@ -25,8 +25,18 @@ app.get('/pullTable', function(req, res){
 	var csvFilePath = './ilvlData.csv';
 	fs.readFile(csvFilePath, 'UTF-8', function(err, csv) {
 		$.csv.toArrays(csv, {}, function(err, data) {
-		//each line in data[] is an entry
+			//each line in data[] is an entry
+			var entries = data.length;
+			var finalJSON = [];
+			for(i = 0; i < entries; i++){
+				var element = data[i].toString().split(',');
+				var tempJSON = [{name: element[0], realm: element[1], ilvl: element[2]}];
+				finalJSON = finalJSON.concat(tempJSON);
+			}
+			res.json(finalJSON);
 
+			//var element = data[0].toString().split(',');
+			//res.json({name: element[0], realm: element[1], ilvl: element[2]});
     	});
   	});
 })
