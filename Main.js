@@ -6,7 +6,7 @@ var $ = jQuery = require('jquery');
 require('jquery-csv');
 var async=require("async");
 
-// respond with inde.html when page is loaded
+// respond with index.html when page is loaded
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 })
@@ -37,13 +37,6 @@ app.get('/pullTable', function(req, res){
   	});
 })
 
-
-
-var names = ['tankadinn', 'kaol', 'brightsidesh'];
-var realms = ['darkspear', 'darkspear', 'darkspear'];
-var ilvls = [0, 0, 0];
-
-
 //called when the user clicks the update button
 //this will query each character in the database from blizards site and update the database.
 app.get('/update', function(req, res){
@@ -60,46 +53,27 @@ app.get('/update', function(req, res){
 					data[key][2] = ilvl;
 					//lets the async know it has finished
 					callback();
-				});
-				
+				});				
 			}, function(err){
+				//writes the new data set to the csv file
 				$.csv.fromArrays(data, {}, function(err, newData){
 						fs.writeFile('./ilvlData.csv', newData, function(){});
 					});
+				//sends a message to the client that it has been updated
 				res.send('updated');
 			});
     	});
   	});
-
-
-
-
-	
 })
 
-
-function getItemLevels(names, realms){
-	for(i = 0; i < names.length; i++){
-		characterRequest(names[i], realms[i])
-		};
-	}
-
-
+//takes in a character name and realm and makes the api call to Blizzard.  Then returns the Item Level from the JSON it receives.
 var characterRequest = function(charName, charRealm, callback){
 	const blizzard = require('blizzard.js').initialize({ apikey: 'ce8c5e2zj8t8q2ebjck9y73usfp2zpt9'});
 
 	blizzard.wow.character(['items'], { origin: 'us', realm: charRealm, name: charName })
   		.then(response => {
-    	//console.log(charName + ': ' + response.data.items.averageItemLevelEquipped);
-    	//console.log('reponse: ' + charName + ': ' + response.data.items.averageItemLevelEquipped);
+    	//returns the Item Level
     	callback(response.data.items.averageItemLevel);
     	
   });
 }
-
-/*const blizzard = require('blizzard.js').initialize({ apikey: 'ce8c5e2zj8t8q2ebjck9y73usfp2zpt9'});
-
-blizzard.wow.character(['items'], { origin: 'us', realm: 'darkspear', name: 'tankadinn' })
-  .then(response => {
-    console.log(response.data.items.averageItemLevelEquipped);
-  });*/
