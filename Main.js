@@ -56,13 +56,9 @@ app.get('/update', function(req, res){
 				var element = elem.toString().split(',');
 				//gets the character and returns the ilvl
 				characterRequest(element[0], element[1], function(ilvl){
+					//sets the item level back in data
 					data[key][2] = ilvl;
-					
-
-
-
-
-
+					//lets the async know it has finished
 					callback();
 				});
 				
