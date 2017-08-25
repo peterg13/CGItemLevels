@@ -5,6 +5,20 @@
 </head>
 <body>
 	<button id="updateButton"> update </button>
+	<div>
+		<p>Character Name</p>
+		<input type="text" id="charName"><br>
+	</div>
+	<div>
+		<p>Character Realm</p>
+		<input type="text" id="charRealm"><br>
+	</div>
+	<input type="submit" value="submit" id="submitButton">
+	<script>
+	$("#submitButton").on("click",function(){
+		console.log(document.getElementById("charName").value);
+	})
+	</script>
 	<script>
 	$("#updateButton").on("click",function(){
 		$.ajax({

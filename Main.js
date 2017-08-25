@@ -6,21 +6,24 @@ var $ = jQuery = require('jquery');
 require('jquery-csv');
 var async=require("async");
 
+//global variables
+var port = 3000;
+var csvFilePath = './ilvlData.csv';
+
 // respond with index.html when page is loaded
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 })
 
 //allows the server to listen over a port
-app.listen(3000, function () {
-  console.log('Server is listening on port 3000')
+app.listen(port, function () {
+  console.log('Server is listening on port ' + port);
 })
 
 //called when document is ready
 //will send the client a json which consist of all of the entries in the 'database'
 app.get('/pullTable', function(req, res){
 	//pulls up each entry in our csv file and stores it in an array
-	var csvFilePath = './ilvlData.csv';
 	fs.readFile(csvFilePath, 'UTF-8', function(err, csv) {
 		$.csv.toArrays(csv, {}, function(err, data) {
 			//each line in data[] is an entry
@@ -41,7 +44,6 @@ app.get('/pullTable', function(req, res){
 //this will query each character in the database from blizards site and update the database.
 app.get('/update', function(req, res){
 	//pulls up each entry in our csv file and stores it in an array
-	var csvFilePath = './ilvlData.csv';
 	fs.readFile(csvFilePath, 'UTF-8', function(err, csv) {
 		$.csv.toArrays(csv, {}, function(err, data) {
 			//each line in data[] is an entry
