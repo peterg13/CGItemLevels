@@ -16,7 +16,17 @@
 	<input type="submit" value="submit" id="submitButton">
 	<script>
 	$("#submitButton").on("click",function(){
-		console.log(document.getElementById("charName").value);
+		var name = document.getElementById("charName").value;
+		var realm = document.getElementById("charRealm").value;
+		$.ajax({
+			url: '/newCharacter',
+			method: 'POST',
+			data: 'I AM USING A LONG STRING TO TEST AND FIND WHERE THIS STRING IS THANK YOU VERY MUCH HAVE A GOOD DAY OK',
+			dataType: 'text',
+		}).done(function(response){
+			//console.log(response);
+		});
+	
 	})
 	</script>
 	<script>

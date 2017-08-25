@@ -68,6 +68,15 @@ app.get('/update', function(req, res){
   	});
 })
 
+app.post('/newCharacter', function (req, res) {
+  console.log(req);
+})
+
+
+
+
+
+
 //takes in a character name and realm and makes the api call to Blizzard.  Then returns the Item Level from the JSON it receives.
 var characterRequest = function(charName, charRealm, callback){
 	const blizzard = require('blizzard.js').initialize({ apikey: 'ce8c5e2zj8t8q2ebjck9y73usfp2zpt9'});
