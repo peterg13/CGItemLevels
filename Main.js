@@ -5,6 +5,7 @@ var fs = require('fs');
 var $ = jQuery = require('jquery');
 require('jquery-csv');
 var async=require("async");
+var bodyParser = require('body-parser')
 
 //global variables
 var port = 3000;
@@ -68,8 +69,8 @@ app.get('/update', function(req, res){
   	});
 })
 
-app.post('/newCharacter', function (req, res) {
-  console.log(req);
+app.post('/newCharacter', bodyParser.json(), function (req, res) {
+  console.log(req.body);
 })
 
 

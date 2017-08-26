@@ -21,8 +21,8 @@
 		$.ajax({
 			url: '/newCharacter',
 			method: 'POST',
-			data: 'I AM USING A LONG STRING TO TEST AND FIND WHERE THIS STRING IS THANK YOU VERY MUCH HAVE A GOOD DAY OK',
-			dataType: 'text',
+			data: JSON.stringify({name: name, realm: realm}),
+			dataType: 'json',
 		}).done(function(response){
 			//console.log(response);
 		});
