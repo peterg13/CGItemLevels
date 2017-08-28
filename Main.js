@@ -11,6 +11,12 @@ var bodyParser = require('body-parser')
 var port = 3000;
 var csvFilePath = './ilvlData.csv';
 
+//allows for "app" to get the body from an incoming message
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
 // respond with index.html when page is loaded
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
@@ -69,7 +75,7 @@ app.get('/update', function(req, res){
   	});
 })
 
-app.post('/newCharacter', bodyParser.json(), function (req, res) {
+app.post('/newCharacter', function (req, res) {
   console.log(req.body);
 })
 

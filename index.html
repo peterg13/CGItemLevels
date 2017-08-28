@@ -21,7 +21,7 @@
 		$.ajax({
 			url: '/newCharacter',
 			method: 'POST',
-			data: JSON.stringify({name: name, realm: realm}),
+			data: {name: name, realm: realm},
 			dataType: 'json',
 		}).done(function(response){
 			//console.log(response);
