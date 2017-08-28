@@ -76,7 +76,22 @@ app.get('/update', function(req, res){
 })
 
 app.post('/newCharacter', function (req, res) {
-  console.log(req.body);
+  var name = req.body.name;
+  var realm = req.body.realm;
+  //pulls up each entry in our csv file and stores it in an array
+	fs.readFile(csvFilePath, 'UTF-8', function(err, csv) {
+		$.csv.toArrays(csv, {}, function(err, data) {
+			//each line in data[] is an entry
+			var newEntry = [name, realm, '0'];
+			data.push(newEntry);
+			//writes the new data set to the csv file
+			$.csv.fromArrays(data, {}, function(err, newData){
+						fs.writeFile('./ilvlData.csv', newData, function(){});
+					});
+				//sends a message to the client that it has been updated
+				res.send('added: '+ name + '-' + realm);
+		});
+	});
 })
 
 
