@@ -75,6 +75,8 @@ app.get('/update', function(req, res){
   	});
 })
 
+//adds a new character to the file
+//takes in a name and a realm of the character to add
 app.post('/newCharacter', function (req, res) {
   var name = req.body.name;
   var realm = req.body.realm;
@@ -94,7 +96,30 @@ app.post('/newCharacter', function (req, res) {
 	});
 })
 
-
+//removes a character from the file
+//takes in the characters name
+app.post('/removeCharacter', function (req, res){
+	var name = req.body.name;
+	//pulls up each entry in our csv file and stores it in an array
+	fs.readFile(csvFilePath, 'UTF-8', function(err, csv) {
+		$.csv.toArrays(csv, {}, function(err, data) {
+			//each line in data[] is an entry
+			//this loop goes through each data set and if it finds the character it will remove it
+			for(i = 0; i < data.length; i++){
+				if(data[i][0] == name){
+					data.splice(i, 1);
+					//writes the new data set to the csv file
+					$.csv.fromArrays(data, {}, function(err, newData){
+						fs.writeFile('./ilvlData.csv', newData, function(){});
+					});
+					//sends a message to the client that it has been updated
+					res.send('removed: '+ name);
+				}
+			}
+			
+		});
+	});
+})
 
 
 

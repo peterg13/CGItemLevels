@@ -14,6 +14,25 @@
 		<input type="text" id="charRealm"><br>
 	</div>
 	<input type="submit" value="submit" id="submitButton">
+	<div>
+		<p>Character Name</p>
+		<input type="text" id="charNameToRemove"><br>
+	</div>
+	<input type="submit" value="remove" id="removeButton">
+	<script>
+	$("#removeButton").on("click",function(){
+		var name = document.getElementById("charNameToRemove").value;
+		$.ajax({
+			url: '/removeCharacter',
+			method: 'POST',
+			data: {name: name},
+			dataType: 'json',
+		}).done(function(response){
+			console.log(response);
+		});
+	
+	})
+	</script>
 	<script>
 	$("#submitButton").on("click",function(){
 		var name = document.getElementById("charName").value;
