@@ -6,53 +6,26 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-
-<section>
-  <!--for demo wrap-->
-  <h1>Community Guild Raid List</h1>
-  <div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Item Level</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <tbody>
-        <tr>
-          <td>Peter</td>
-          <td>Gustafson</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<!--Table of Item Levels-->
+	<section>
+	  <div class="tbl-header">
+	    <table cellpadding="0" cellspacing="0" border="0">
+	      <thead>
+	        <tr>
+	          <th>Name</th>
+	          <th>Item Level</th>
+	        </tr>
+	      </thead>
+	    </table>
+	  </div>
+	  <div class="tbl-content">
+	    <table cellpadding="0" cellspacing="0" border="0" id='ilvlTable'>
+	      <tbody>
+	        <!--This is where new entries go-->
+	      </tbody>
+	    </table>
+	  </div>
+	</section>
 
 
 
@@ -80,6 +53,7 @@
 	<script>
 	$("#removeButton").on("click",function(){
 		var name = document.getElementById("charNameToRemove").value;
+		document.getElementById("charNameToRemove").value = '';
 		$.ajax({
 			url: '/removeCharacter',
 			method: 'POST',
@@ -95,6 +69,8 @@
 	$("#submitButton").on("click",function(){
 		var name = document.getElementById("charName").value;
 		var realm = document.getElementById("charRealm").value;
+		document.getElementById("charName").value = '';
+		document.getElementById("charRealm").value = '';
 		$.ajax({
 			url: '/newCharacter',
 			method: 'POST',
@@ -124,7 +100,7 @@
 			//$("body").append("<b>" + response.name + response.realm + response.ilvl + "</b>");
 			console.log(response);
 			for(i = 0; i < response.length; i++){
-				$("body").append("<div>" + response[i].name + '-' + response[i].realm + '-' + response[i].ilvl + "</div>");
+				$("#ilvlTable tbody").append("<tr><td>" + response[i].name + '</td><td>' + response[i].ilvl + "</td></tr>");
 			}
 		});
 });</script>
