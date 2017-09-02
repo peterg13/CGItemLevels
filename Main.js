@@ -67,6 +67,16 @@ app.get('/update', function(req, res){
 					callback();
 				});				
 			}, function(err){
+				//sorts the data by ilvl
+				for(i = 0; i < data.length; i++){
+					for(j = 0; j < data.length-1; j++){
+						if(data[j][2] < data[j+1][2]){
+							var temp = data[j];
+							data[j] = data[j+1];
+							data[j+1] = temp;
+						}
+					}
+				}
 				//writes the new data set to the csv file
 				$.csv.fromArrays(data, {}, function(err, newData){
 						fs.writeFile('./ilvlData.csv', newData, function(){});
