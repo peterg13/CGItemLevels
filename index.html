@@ -46,13 +46,15 @@
 		    <a id="removeButton">Remove</a>
 		    </form>
 		</div>
+
+		<a id="updateButton"> update </a>
 	</div>
 
 	<div id="alliancePic">
 	</div>
 
 
-	<a id="updateButton"> update </a>
+	
 	<script>
 	$("#removeButton").on("click",function(){
 		var name = document.getElementById("charNameToRemove").value;
@@ -103,7 +105,7 @@
 			//$("body").append("<b>" + response.name + response.realm + response.ilvl + "</b>");
 			console.log(response);
 			for(i = 0; i < response.length; i++){
-				$("#ilvlTable tbody").append("<tr><td>" + response[i].name + '</td><td>' + response[i].ilvl + "</td></tr>");
+				$("#ilvlTable tbody").append("<tr id='class-" + response[i].class + "'><td>" + response[i].name + '</td><td>' + response[i].ilvl + "</td></tr>");
 			}
 		});
 });</script>

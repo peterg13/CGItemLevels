@@ -19,6 +19,54 @@ table{
   margin-top: 0px;
   border: 1px solid rgba(var(--background-color));
 }
+/*Warrior*/
+#class-1{
+  background: rgba(199, 156, 110, .15);
+}
+/*Paladin*/
+#class-2{
+  background: rgba(245, 140, 186, .15);
+}
+/*Hunter*/
+#class-3{
+  background: rgba(171, 212, 115, .15);
+}
+/*Rogue*/
+#class-4{
+  background: rgba(255, 245, 105, .15);
+}
+/*Priest*/
+#class-5{
+  background: rgba(255, 255, 255, .15);
+}
+/*Death Knight*/
+#class-6{
+  background: rgba(196, 31, 59, .15);
+}
+/*Shaman*/
+#class-7{
+  background: rgba(0, 112, 222, .15);
+}
+/*Mage*/
+#class-8{
+  background: rgba(105, 204, 240, .15);
+}
+/*Warlock*/
+#class-9{
+  background: rgba(148, 130, 201, .15);
+}
+/*Monk*/
+#class-10{
+  background: rgba(0, 255, 150, .15);
+}
+/*Druid*/
+#class-11{
+  background: rgba(255, 125, 10, .15);
+}
+/*Demon Hunter*/
+#class-12{
+  background: rgba(163, 48, 201, .15);
+}
 th{
   padding: 20px 15px;
   text-align: left;
@@ -128,7 +176,7 @@ input{
   padding: 8px;
   border-radius: 6px;
   border: none;
-  background: rgba(3,3,3,.1);
+  background: rgba(3,3,3,.2);
   -webkit-transition: all 2s ease-in-out;
   -moz-transition: all 2s ease-in-out;
   -o-transition: all 2s ease-in-out;
