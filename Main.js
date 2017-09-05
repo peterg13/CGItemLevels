@@ -8,7 +8,7 @@ var async=require("async");
 var bodyParser = require('body-parser')
 
 //global variables
-var port = 3000;
+var port = process.env.PORT || 3000;
 var csvFilePath = './ilvlData.csv';
 
 app.use(express.static(__dirname+"/"));
