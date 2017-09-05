@@ -11,7 +11,7 @@ var bodyParser = require('body-parser')
 var port = process.env.PORT || 3000;
 var csvFilePath = './ilvlData.csv';
 
-app.use(express.static(__dirname+"/"));
+app.use(express.static(__dirname+"/assets"));
 
 
 //allows for "app" to get the body from an incoming message
