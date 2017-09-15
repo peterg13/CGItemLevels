@@ -43,7 +43,7 @@ app.get('/pullTable', function(req, res){
 	    } else {
 	      console.log('worked');
 	      // do something with data.Body
-	      console.log(data.Body.toString('utf-8');
+	      console.log(data.Body.toString('utf-8'));
 	    }
 	  }
 	);
