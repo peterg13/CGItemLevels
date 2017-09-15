@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-    "node": "8.4.0"
+    "node": "8.4.0",
+    "npm": "5.3.0"
   },
   "main": "Main.js",
   "dependencies": {
