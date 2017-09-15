@@ -42,7 +42,6 @@ app.get('/pullTable', function(req, res){
 	    if (error != null) {
 	      //error
 	    } else {
-	      alert("Loaded " + data.ContentLength + " bytes");
 	      // do something with data.Body
 	      $.csv.toArrays(csv.body, {}, function(err, data) {
 			//each line in data[] is an entry
