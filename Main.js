@@ -110,7 +110,7 @@ app.get('/update', function(req, res){
 				$.csv.fromArrays(data, {}, function(err, newData){
 						fs.writeFile(csvFilePath, newData, function(){
 							var s3 = new AWS.S3();
-							var params = {Bucket: 'cgilvlbucket', Key: 'ilvlData.csv', Body: csvFilePath};
+							var params = {Bucket: 'cgilvlbucket', Key: 'ilvlData.csv', Body: newData};
 							s3.upload(params, function(err, data) {
 								console.log(err, data);
 							});
