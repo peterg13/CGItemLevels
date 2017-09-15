@@ -37,13 +37,25 @@ app.get('/pullTable', function(req, res){
 	var s3 = new AWS.S3();
 	s3.getObject(
 	  { Bucket: "cgilvlbucket", Key: "ilvlData.csv" },
-	  function (error, data) {
+	  function (error, csv) {
 	    if (error != null) {
 	      console.log('error');
 	    } else {
-	      console.log('worked');
+	    	$.csv.toArrays(csv.body, {}, function(err, data) {
+				//each line in data[] is an entry
+				var finalJSON = [];
+				//converts each entry in data[] into a json object and concats it with 'finalJSON' which will be sent to client
+				for(i = 0; i < data.length; i++){
+					var element = data[i].toString().split(',');
+					var tempJSON = [{name: element[0], ilvl: element[2], class: element[3]}];
+					finalJSON = finalJSON.concat(tempJSON);
+				}
+				//sends the final json to the client
+				res.json(finalJSON);
+    		});
+	      //console.log('worked');
 	      // do something with data.Body
-	      console.log(data.Body.toString('utf-8'));
+	      //console.log(csv.Body.toString('utf-8'));
 	    }
 	  }
 	);
