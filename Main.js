@@ -41,7 +41,7 @@ app.get('/pullTable', function(req, res){
 	    if (error != null) {
 	      console.log('error');
 	    } else {
-	    	$.csv.toArrays(csv.body, {}, function(err, data) {
+	    	$.csv.toArrays(csv.Body.toString('utf-8'), {}, function(err, data) {
 				//each line in data[] is an entry
 				var finalJSON = [];
 				//converts each entry in data[] into a json object and concats it with 'finalJSON' which will be sent to client
