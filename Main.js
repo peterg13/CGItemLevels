@@ -110,12 +110,12 @@ app.get('/update', function(req, res){
 				//writes the new data set to the csv file
 				$.csv.fromArrays(data, {}, function(err, newData){
 					var s3 = new AWS.S3();
-							var params = {Bucket: 'cgilvlbucket', Key: 'ilvlData.csv', Body: newData};
-							s3.upload(params, function(err, data) {
-								console.log(err, data);
-							});
-						//fs.writeFile(csvFilePath, newData, function(){});
+					var params = {Bucket: 'cgilvlbucket', Key: 'ilvlData.csv', Body: newData};
+					s3.upload(params, function(err, data) {
+						console.log(err, data);
 					});
+					//fs.writeFile(csvFilePath, newData, function(){});
+				});
 
 				
 
@@ -141,6 +141,11 @@ app.post('/newCharacter', function (req, res) {
 			//writes the new data set to the csv file
 			$.csv.fromArrays(data, {}, function(err, newData){
 						fs.writeFile('./ilvlData.csv', newData, function(){});
+						var s3 = new AWS.S3();
+						var params = {Bucket: 'cgilvlbucket', Key: 'ilvlData.csv', Body: newData};
+						s3.upload(params, function(err, data) {
+							console.log(err, data);
+						});
 					});
 				//sends a message to the client that it has been updated
 				res.send('added: '+ name + '-' + realm);
@@ -163,6 +168,11 @@ app.post('/removeCharacter', function (req, res){
 					//writes the new data set to the csv file
 					$.csv.fromArrays(data, {}, function(err, newData){
 						fs.writeFile('./ilvlData.csv', newData, function(){});
+						var s3 = new AWS.S3();
+						var params = {Bucket: 'cgilvlbucket', Key: 'ilvlData.csv', Body: newData};
+						s3.upload(params, function(err, data) {
+							console.log(err, data);
+						});
 					});
 					//sends a message to the client that it has been updated
 					res.send('removed: '+ name);
