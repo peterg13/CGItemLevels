@@ -2,6 +2,9 @@
   "name": "cg_item_levels",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "8.4.0"
+  },
   "main": "Main.js",
   "dependencies": {
     "async": "^2.5.0",
