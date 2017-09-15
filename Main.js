@@ -5,7 +5,8 @@ var fs = require('fs');
 var $ = jQuery = require('jquery');
 require('jquery-csv');
 var async=require("async");
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var AWS = require('aws-sdk');
 
 //global variables
 var port = process.env.PORT || 3000;
@@ -33,6 +34,18 @@ app.listen(port, function () {
 //called when document is ready
 //will send the client a json which consist of all of the entries in the 'database'
 app.get('/pullTable', function(req, res){
+	var s3 = new AWS.S3();
+	s3.getObject(
+	  { Bucket: "cgilvlbucket", Key: "ilvlData.csv" },
+	  function (error, data) {
+	    if (error != null) {
+	      console.log('error');
+	    } else {
+	      console.log('worked');
+	      // do something with data.Body
+	    }
+	  }
+	);
 	//pulls up each entry in our csv file and stores it in an array
 	fs.readFile(csvFilePath, 'UTF-8', function(err, csv) {
 		$.csv.toArrays(csv, {}, function(err, data) {
