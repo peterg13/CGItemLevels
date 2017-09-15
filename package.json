@@ -5,6 +5,7 @@
   "main": "Main.js",
   "dependencies": {
     "async": "^2.5.0",
+    "aws-sdk": "^2.116.0",
     "blizzard.js": "^1.7.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",

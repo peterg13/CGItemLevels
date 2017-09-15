@@ -6,6 +6,7 @@ var $ = jQuery = require('jquery');
 require('jquery-csv');
 var async=require("async");
 var bodyParser = require('body-parser')
+var aws = require('aws-sdk');
 
 //global variables
 var port = process.env.PORT || 3000;
@@ -33,6 +34,32 @@ app.listen(port, function () {
 //called when document is ready
 //will send the client a json which consist of all of the entries in the 'database'
 app.get('/pullTable', function(req, res){
+
+	var s3 = new AWS.S3();
+	s3.getObject(
+	  { Bucket: S3_BUCKET, Key: "ilvlData.csv" },
+	  function (error, csv) {
+	    if (error != null) {
+	      //error
+	    } else {
+	      alert("Loaded " + data.ContentLength + " bytes");
+	      // do something with data.Body
+	      $.csv.toArrays(csv.body, {}, function(err, data) {
+			//each line in data[] is an entry
+			var finalJSON = [];
+			//converts each entry in data[] into a json object and concats it with 'finalJSON' which will be sent to client
+			for(i = 0; i < data.length; i++){
+				var element = data[i].toString().split(',');
+				var tempJSON = [{name: element[0], ilvl: element[2], class: element[3]}];
+				finalJSON = finalJSON.concat(tempJSON);
+			}
+			//sends the final json to the client
+			res.json(finalJSON);
+    	});
+	    }
+	  }
+	);
+	/*
 	//pulls up each entry in our csv file and stores it in an array
 	fs.readFile(csvFilePath, 'UTF-8', function(err, csv) {
 		$.csv.toArrays(csv, {}, function(err, data) {
@@ -47,7 +74,7 @@ app.get('/pullTable', function(req, res){
 			//sends the final json to the client
 			res.json(finalJSON);
     	});
-  	});
+  	});*/
 })
 
 //called when the user clicks the update button
