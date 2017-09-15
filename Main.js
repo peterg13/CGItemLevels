@@ -41,6 +41,7 @@ app.get('/pullTable', function(req, res){
 	    if (error != null) {
 	      console.log('error');
 	    } else {
+	    	fs.writeFile(csvFilePath, csv.Body.toString('utf-8'), function(){});
 	    	$.csv.toArrays(csv.Body.toString('utf-8'), {}, function(err, data) {
 				//each line in data[] is an entry
 				var finalJSON = [];
