@@ -43,9 +43,11 @@ app.get('/pullTable', function(req, res){
 	    } else {
 	      console.log('worked');
 	      // do something with data.Body
+	      console.log(data.body);
 	    }
 	  }
 	);
+	/*
 	//pulls up each entry in our csv file and stores it in an array
 	fs.readFile(csvFilePath, 'UTF-8', function(err, csv) {
 		$.csv.toArrays(csv, {}, function(err, data) {
@@ -61,6 +63,7 @@ app.get('/pullTable', function(req, res){
 			res.json(finalJSON);
     	});
   	});
+  	*/
 })
 
 //called when the user clicks the update button
