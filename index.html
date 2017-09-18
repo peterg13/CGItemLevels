@@ -108,7 +108,9 @@
 			url: '/update',
 			method: 'GET',
 		}).done(function(response){
-			console.log(response);
+			if(response == "updated"){
+				alert("Updated");
+			}
 		});
 	})
 	</script>
