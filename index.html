@@ -59,6 +59,16 @@
 	$("#removeButton").on("click",function(){
 		var name = document.getElementById("charNameToRemove").value;
 		document.getElementById("charNameToRemove").value = '';
+
+		for(i = 0; i < document.getElementById("ilvlTable").rows.length; i++){
+			var currentRowName = document.getElementById("ilvlTable").rows[i][0];
+			if(currentRowName == name){
+				document.getElementById("myTable").deleteRow(i);
+			}
+		}
+
+
+
 		$.ajax({
 			url: '/removeCharacter',
 			method: 'POST',
