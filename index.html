@@ -59,17 +59,14 @@
 	$("#removeButton").on("click",function(){
 		var name = document.getElementById("charNameToRemove").value;
 		document.getElementById("charNameToRemove").value = '';
-
+		//this loop finds the row in the table and removes it from the page
 		for(i = 0; i < document.getElementById("ilvlTable").rows.length; i++){
 			var currentRowName = document.getElementById("ilvlTable").rows[i].cells[0].innerHTML;
-			console.log("currentRowName: " + currentRowName + ", name: " + name);
 			if(currentRowName == name){
 				document.getElementById("ilvlTable").deleteRow(i);
 			}
 		}
-
-
-
+		//This send the remove request to server
 		$.ajax({
 			url: '/removeCharacter',
 			method: 'POST',
@@ -87,6 +84,13 @@
 		var realm = document.getElementById("charRealm").value;
 		document.getElementById("charName").value = '';
 		document.getElementById("charRealm").value = '';
+		//adds an empty character to the end of the table
+		var table = document.getElementById("ilvlTable");
+		var tableSize = document.getElementById("ilvlTable").rows.length;
+		var row = table.insertRow(tableSize);
+		var cell = row.insertCell(0);
+		cell.innerHTML = name;
+		//sends the new character request to server
 		$.ajax({
 			url: '/newCharacter',
 			method: 'POST',
