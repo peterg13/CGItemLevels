@@ -61,8 +61,7 @@
 		document.getElementById("charNameToRemove").value = '';
 
 		for(i = 0; i < document.getElementById("ilvlTable").rows.length; i++){
-			var currentRowName = document.getElementById("ilvlTable").rows[i][0];
-			console.log(document.getElementById("ilvlTable").rows[i]);
+			var currentRowName = document.getElementById("ilvlTable").rows[i].cells[0];
 			console.log("currentRowName: " + currentRowName + ", name: " + name);
 			if(currentRowName == name){
 				document.getElementById("ilvlTable").deleteRow(i);
