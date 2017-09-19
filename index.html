@@ -53,7 +53,22 @@
 	<div id="alliancePic">
 	</div>
 
-
+	<!--Global Scripts-->
+	<script>
+		function pullTable(){
+			$.ajax({
+				url: '/pullTable',
+				method: 'GET',
+			}).done(function(response){
+				console.log(response);
+				for(i = 0; i < response.length; i++){
+					var nameAndLink = "<a href='https://worldofwarcraft.com/en-us/character/" + response[i].realm +  "/" + response[i].name + "'>" + response[i].name + "</a>";
+					$("#ilvlTable tbody").append("<tr id='class-" + response[i].class + "'><td>" + nameAndLink + '</td><td>' + response[i].ilvl + "</td></tr>");
+				}
+			});
+		}
+	</script>
+	<!-- End of Global Scripts -->
 	
 	<script>
 	$("#removeButton").on("click",function(){
@@ -109,24 +124,10 @@
 			method: 'GET',
 		}).done(function(response){
 			if(response == "updated"){
-				alert("Updated");
+				pullTable();
 			}
 		});
 	})
-	</script>
-	<script>
-		function pullTable(){
-			$.ajax({
-				url: '/pullTable',
-				method: 'GET',
-			}).done(function(response){
-				console.log(response);
-				for(i = 0; i < response.length; i++){
-					var nameAndLink = "<a href='https://worldofwarcraft.com/en-us/character/" + response[i].realm +  "/" + response[i].name + "'>" + response[i].name + "</a>";
-					$("#ilvlTable tbody").append("<tr id='class-" + response[i].class + "'><td>" + nameAndLink + '</td><td>' + response[i].ilvl + "</td></tr>");
-				}
-			});
-		}
 	</script>
 	<script>$( document ).ready(function() {
    		pullTable();
