@@ -163,7 +163,7 @@ h1{
 }
 
 /* Inputs */
-a,
+.buttons,
 input{
   font-family: 'Open Sans Condensed', sans-serif;
   text-decoration: none;
