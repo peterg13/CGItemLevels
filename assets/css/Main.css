@@ -201,14 +201,10 @@ input:focus{
 
 
 /* Link */
-/*
 a{
-  font-family: 'Open Sans Condensed', sans-serif;
-  text-align: center;
-  padding: 4px 8px;
-  background: rgba(150,150,150,.8);
+  text-decoration: none;
 }
-
+/*
 a:hover{
   opacity: 0.7;
 }
