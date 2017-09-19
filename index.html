@@ -124,7 +124,11 @@
 			method: 'GET',
 		}).done(function(response){
 			if(response == "updated"){
+				var oldTableLength = document.getElementById("ilvlTable").rows.length;
 				pullTable();
+				for(i = 0; i < oldTableLength; i++){
+					document.getElementById("ilvlTable").deleteRow(0);
+				}
 			}
 		});
 	})
