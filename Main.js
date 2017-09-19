@@ -120,7 +120,7 @@ app.post('/newCharacter', function (req, res) {
 			$.csv.fromArrays(data, {}, function(err, newData){
 				//writes to csv
 				fs.writeFile('./ilvlData.csv', newData, function(){});
-				//sends to AMS server
+				//sends to AWS server
 				var s3 = new AWS.S3();
 				var params = {Bucket: 'cgilvlbucket', Key: 'ilvlData.csv', Body: newData};
 				s3.upload(params, function(err, data) {
