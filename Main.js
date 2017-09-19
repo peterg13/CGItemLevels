@@ -48,7 +48,7 @@ app.get('/pullTable', function(req, res){
 				//converts each entry in data[] into a json object and concats it with 'finalJSON' which will be sent to client
 				for(i = 0; i < data.length; i++){
 					var element = data[i].toString().split(',');
-					var tempJSON = [{name: element[0], ilvl: element[2], class: element[3]}];
+					var tempJSON = [{name: element[0], realm: element[1], ilvl: element[2], class: element[3]}];
 					finalJSON = finalJSON.concat(tempJSON);
 				}
 				//sends the final json to the client
