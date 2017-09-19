@@ -60,7 +60,7 @@
 				url: '/pullTable',
 				method: 'GET',
 			}).done(function(response){
-				console.log(response);
+				console.log("Pull Table Called");
 				for(i = 0; i < response.length; i++){
 					var nameAndLink = "<a href='https://worldofwarcraft.com/en-us/character/" + response[i].realm +  "/" + response[i].name + "'>" + response[i].name + "</a>";
 					$("#ilvlTable tbody").append("<tr id='class-" + response[i].class + "'><td>" + nameAndLink + '</td><td>' + response[i].ilvl + "</td></tr>");
