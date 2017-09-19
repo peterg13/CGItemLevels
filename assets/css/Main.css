@@ -203,6 +203,11 @@ input:focus{
 /* Link */
 a{
   text-decoration: none;
+  color: white;
+}
+a:visited{
+  text-decoration: none;
+  color: white;
 }
 /*
 a:hover{
