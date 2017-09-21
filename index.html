@@ -76,7 +76,7 @@
 		document.getElementById("charNameToRemove").value = '';
 		//this loop finds the row in the table and removes it from the page
 		for(i = 0; i < document.getElementById("ilvlTable").rows.length; i++){
-			var currentRowName = document.getElementById("ilvlTable").rows[i].cells[0].children()[0].innerHTML;
+			var currentRowName = document.getElementById("ilvlTable").rows[i].cells[0].innerHTML;
 			console.log(currentRowName);
 			if(currentRowName == name){
 				document.getElementById("ilvlTable").deleteRow(i);
