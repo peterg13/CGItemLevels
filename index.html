@@ -13,8 +13,8 @@
 	      <thead>
 	        <tr>
 	          <th>Name</th>
-	          <th text-align="center">Equipped ilvl</th>
-	          <th text-align="center">Total ilvl</th>
+	          <th>Equipped ilvl</th>
+	          <th>Total ilvl</th>
 	        </tr>
 	      </thead>
 	    </table>
@@ -64,7 +64,7 @@
 				console.log("Pull Table Called");
 				for(i = 0; i < response.length; i++){
 					var nameAndLink = "<a target='_blank' href='https://worldofwarcraft.com/en-us/character/" + response[i].realm +  "/" + response[i].name + "'>" + response[i].name + "</a>";
-					$("#ilvlTable tbody").append("<tr id='class-" + response[i].class + "'><td>" + nameAndLink + "</td><td text-align='center'>" + response[i].equippedilvl + "</td><td text-align='center'>" + response[i].totalilvl + "</td></tr>");
+					$("#ilvlTable tbody").append("<tr id='class-" + response[i].class + "'><td>" + nameAndLink + "</td><td>" + response[i].equippedilvl + "</td><td>" + response[i].totalilvl + "</td></tr>");
 				}
 			});
 		}
