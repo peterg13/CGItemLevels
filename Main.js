@@ -48,7 +48,7 @@ app.get('/pullTable', function(req, res){
 				//converts each entry in data[] into a json object and concats it with 'finalJSON' which will be sent to client
 				for(i = 0; i < data.length; i++){
 					var element = data[i].toString().split(',');
-					var tempJSON = [{name: element[0], realm: element[1], ilvl: element[2], class: element[3]}];
+					var tempJSON = [{name: element[0], realm: element[1], equippedilvl: element[2], totalilvl: element[3], class: element[4]}];
 					finalJSON = finalJSON.concat(tempJSON);
 				}
 				//sends the final json to the client
@@ -71,16 +71,17 @@ app.get('/update', function(req, res){
 				//gets the character and returns the ilvl
 				characterRequest(element[0], element[1], function(charData){
 					//sets the item level back in data
-					data[key][2] = charData.ilvl;
-					data[key][3] = charData.class;
+					data[key][2] = charData.equippedilvl;
+					data[key][3] = charData.totalilvl;
+					data[key][4] = charData.class;
 					//lets the async know it has finished
 					callback();
 				});				
 			}, function(err){
-				//sorts the data by ilvl
+				//sorts the data by totalilvl
 				for(i = 0; i < data.length; i++){
 					for(j = 0; j < data.length-1; j++){
-						if(data[j][2] < data[j+1][2]){
+						if(data[j][3] < data[j+1][3]){
 							var temp = data[j];
 							data[j] = data[j+1];
 							data[j+1] = temp;
@@ -114,7 +115,7 @@ app.post('/newCharacter', function (req, res) {
 	fs.readFile(csvFilePath, 'UTF-8', function(err, csv) {
 		$.csv.toArrays(csv, {}, function(err, data) {
 			//each line in data[] is an entry
-			var newEntry = [name, realm, '0', '0'];
+			var newEntry = [name, realm, '0', '0', '0'];
 			data.push(newEntry);
 			//writes the new data set to the csv file
 			$.csv.fromArrays(data, {}, function(err, newData){
@@ -175,7 +176,7 @@ var characterRequest = function(charName, charRealm, callback){
 	blizzard.wow.character(['items'], { origin: 'us', realm: charRealm, name: charName })
   		.then(response => {
     	//returns the Item Level
-    	callback({ilvl: response.data.items.averageItemLevel, class: response.data.class});
+    	callback({equippedilvl: response.data.items.averageItemLevelEquipped, totalilvl: response.data.items.averageItemLevel, class: response.data.class});
     	
   });
 }
