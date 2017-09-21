@@ -104,7 +104,8 @@
 		var tableSize = document.getElementById("ilvlTable").rows.length;
 		var row = table.insertRow(tableSize);
 		var cell = row.insertCell(0);
-		cell.innerHTML = name;
+		var nameAndLink = "<a target='_blank' href='https://worldofwarcraft.com/en-us/character/" + realm +  "/" + name + "'>" + name + "</a>";
+		cell.innerHTML = nameAndLink;
 		//sends the new character request to server
 		$.ajax({
 			url: '/newCharacter',
