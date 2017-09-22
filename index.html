@@ -74,7 +74,7 @@
 	<!--When Equipped ILVL is clicked it will sort by this -->
 	<script>
 	$("#equippedilvl").on("click",function(){
-		console.log($("#ilvlTable tbody").eq(0));
+		console.log($("#ilvlTable tbody").children.().eq(0));
 		var table = document.getElementById("ilvlTable");
 		var ilvlrows = table.rows;
 		for(i = 0; i < ilvlrows.length; i++){
