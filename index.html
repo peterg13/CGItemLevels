@@ -79,16 +79,9 @@
 		for(i = 0; i < ilvlrows.length; i++){
 			for(j = 0; j < ilvlrows.length-1; j++){
 				if(ilvlrows[j].cells[1] < ilvlrows[j+1].cells[1]){
-					var temp = ilvlrows[j];
-					ilvlrows[j] = ilvlrows[j+1];
-					ilvlrows[j+1] = temp;
+					ilvlrows[j].next().after(ilvlrows[j]);
 				}
 			}
-		}
-		for(i = 0; i < ilvlrows.length-1; i++){
-			table.deleteRow(0);
-			var row = table.insertRow(ilvlrows.length);
-			row.innerHTML = ilvlrows[i].innerHTML;		
 		}
 		return false;
 	})
