@@ -80,7 +80,7 @@
 		for(i = 0; i < ilvlrows.length; i++){
 			for(j = 0; j < ilvlrows.length-1; j++){
 				if(ilvlrows[j].cells[1] < ilvlrows[j+1].cells[1]){
-					ilvlrows[j].next().after(ilvlrows[j]);
+					$("#ilvlTable tbody").children().eq(j).next().after($("#ilvlTable tbody").children().eq(j));
 				}
 			}
 		}
