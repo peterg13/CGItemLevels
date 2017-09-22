@@ -86,8 +86,9 @@
 			}
 		}
 		for(i = 0; i < ilvlrows.length-1; i++){
-			table.insertRow(ilvlrows[i]);
-			
+			table.deleteRow(0);
+			var row = table.insertRow(ilvlrows.length);
+			row.innerHTML = ilvlrows[i].innerHTML;		
 		}
 		return false;
 	})
