@@ -19,6 +19,12 @@ table{
   margin-top: 0px;
   border: 1px solid rgba(var(--background-color));
 }
+#equippedilvl{
+  cursor: pointer;
+}
+#totalilvl{
+  cursor: pointer;
+}
 /*Warrior*/
 #class-1{
   background: rgba(199, 156, 110, .15);
