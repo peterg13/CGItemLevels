@@ -76,15 +76,17 @@
 	$("#equippedilvl").on("click",function(){
 		var rows = document.getElementById("ilvlTable").rows;
 		for(i = 0; i < rows.length; i++){
-					for(j = 0; j < rows.length-1; j++){
-						if(rows[j].cells[1] < rows[j+1].cells[1]){
-							var temp = rows[j];
-							rows[j] = rows[j+1];
-							rows[j+1] = temp;
-						}
-					}
+			for(j = 0; j < rows.length-1; j++){
+				if(rows[j].cells[1] < rows[j+1].cells[1]){
+					var temp = rows[j];
+					rows[j] = rows[j+1];
+					rows[j+1] = temp;
 				}
-		console.log(rows);
+			}
+		}
+		for(i = 0; i < rows.length; i++){
+			document.getElementById("ilvlTable").rows[i] = rows[i];
+		}
 		return false;
 	})
 	</script>
