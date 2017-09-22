@@ -74,18 +74,18 @@
 	<!--When Equipped ILVL is clicked it will sort by this -->
 	<script>
 	$("#equippedilvl").on("click",function(){
-		var rows = document.getElementById("ilvlTable").rows;
-		for(i = 0; i < rows.length; i++){
-			for(j = 0; j < rows.length-1; j++){
-				if(rows[j].cells[1] < rows[j+1].cells[1]){
-					var temp = rows[j];
-					rows[j] = rows[j+1];
-					rows[j+1] = temp;
+		var ilvlrows = document.getElementById("ilvlTable").rows;
+		for(i = 0; i < ilvlrows.length; i++){
+			for(j = 0; j < ilvlrows.length-1; j++){
+				if(ilvlrows[j].cells[1] < ilvlrows[j+1].cells[1]){
+					var temp = ilvlrows[j];
+					ilvlrows[j] = ilvlrows[j+1];
+					ilvlrows[j+1] = temp;
 				}
 			}
 		}
 		for(i = 0; i < rows.length; i++){
-			document.getElementById("ilvlTable").rows[i] = rows[i];
+			document.getElementById("ilvlTable").rows[i] = ilvlrows[i];
 		}
 		return false;
 	})
