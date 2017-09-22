@@ -90,8 +90,16 @@
 	<!--When Total ILVL is clicked it will sort by this -->
 	<script>
 	$("#totalilvl").on("click",function(){
-		alert("totalilvl");
-		return false;
+		var table = document.getElementById("ilvlTable");
+		var ilvlrows = table.rows;
+		for(i = 0; i < ilvlrows.length; i++){
+			for(j = 0; j < ilvlrows.length-1; j++){
+				//if the first rows total item level is less than the second, moves the first down one row.
+				if(ilvlrows[j].cells[2].innerHTML < ilvlrows[j+1].cells[2].innerHTML){
+					$("#ilvlTable tbody").children().eq(j).next().after($("#ilvlTable tbody").children().eq(j));
+				}
+			}
+		}
 	})
 	</script>
 	
