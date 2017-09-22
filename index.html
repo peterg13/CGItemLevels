@@ -75,6 +75,7 @@
 	<script>
 	$("#equippedilvl").on("click",function(){
 		console.log($("#ilvlTable tbody").children().eq(0));
+		$("#ilvlTable tbody").children().eq(0).next().after($("#ilvlTable tbody").children().eq(0));
 		var table = document.getElementById("ilvlTable");
 		var ilvlrows = table.rows;
 		for(i = 0; i < ilvlrows.length; i++){
