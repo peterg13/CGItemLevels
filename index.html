@@ -77,10 +77,8 @@
 		var table = document.getElementById("ilvlTable");
 		var ilvlrows = table.rows;
 		for(i = 0; i < ilvlrows.length; i++){
-			console.log("first loop length" + ilvlrows.length);
 			for(j = 0; j < ilvlrows.length-1; j++){
-				console.log("second loop length" + ilvlrows.length);
-				console.log("ilvlrows[j].cells[1]: " + ilvlrows[j].cells[1] + ", ilvlrows[j+1].cells[1]: " + ilvlrows[j+1].cells[1]);
+				//if the first rows equipped item level is less than the second, moves the first down one row.
 				if(ilvlrows[j].cells[1].innerHTML < ilvlrows[j+1].cells[1].innerHTML){
 					$("#ilvlTable tbody").children().eq(j).next().after($("#ilvlTable tbody").children().eq(j));
 				}
