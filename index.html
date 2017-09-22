@@ -85,7 +85,7 @@
 			}
 		}
 		for(i = 0; i < ilvlrows.length; i++){
-			document.getElementById("ilvlTable").rows[i] = ilvlrows[i];
+			document.getElementById("ilvlTable").rows[i].replaceWith(ilvlrows[i]);
 		}
 		alert("sorted");
 		return false;
