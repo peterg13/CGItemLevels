@@ -74,7 +74,8 @@
 	<!--When Equipped ILVL is clicked it will sort by this -->
 	<script>
 	$("#equippedilvl").on("click",function(){
-		var ilvlrows = document.getElementById("ilvlTable").rows;
+		var table = document.getElementById("ilvlTable");
+		var ilvlrows = table.rows;
 		for(i = 0; i < ilvlrows.length; i++){
 			for(j = 0; j < ilvlrows.length-1; j++){
 				if(ilvlrows[j].cells[1] < ilvlrows[j+1].cells[1]){
@@ -85,8 +86,9 @@
 			}
 		}
 		for(i = 0; i < ilvlrows.length; i++){
-			var tableRow = document.getElementById("ilvlTable").rows[i];
-			tableRow = ilvlrows[i];
+			table.deleteRow(0);
+			table.insertRow(ilvlrows[i]);
+			
 		}
 		return false;
 	})
