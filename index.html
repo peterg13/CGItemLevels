@@ -85,10 +85,9 @@
 				}
 			}
 		}
-		for(i = 0; i < ilvlrows.length; i++){
+		for(i = 0; i < ilvlrows.length-1; i++){
 			table.deleteRow(0);
 			table.insertRow(ilvlrows[i]);
-			
 		}
 		return false;
 	})
