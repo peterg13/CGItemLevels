@@ -84,7 +84,9 @@
 				}
 			}
 		}
-		document.getElementById("ilvlTable").replaceWith(ilvlrows);
+		for(i = 0; i < ilvlrows.length; i++){
+			document.getElementById("ilvlTable").rows[i].parent().replaceWith(ilvlrows[i]);
+		}
 		alert("sorted");
 		return false;
 	})
