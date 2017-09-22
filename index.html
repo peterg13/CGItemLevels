@@ -13,8 +13,8 @@
 	      <thead>
 	        <tr>
 	          <th>Name</th>
-	          <th>Equipped ilvl</th>
-	          <th>Total ilvl</th>
+	          <th id="equippedilvl">Equipped ilvl</th>
+	          <th id="totalilvl">Total ilvl</th>
 	        </tr>
 	      </thead>
 	    </table>
@@ -70,6 +70,20 @@
 		}
 	</script>
 	<!-- End of Global Scripts -->
+
+	<script>
+	$("#equippedilvl").on("click",function(){
+		alert("equippedilvl");
+		return false;
+	})
+	</script>
+
+	<script>
+	$("#totalilvl").on("click",function(){
+		alert("totalilvl");
+		return false;
+	})
+	</script>
 	
 	<script>
 	$("#removeButton").on("click",function(){
