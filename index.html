@@ -85,7 +85,8 @@
 			}
 		}
 		for(i = 0; i < ilvlrows.length; i++){
-			console.log(ilvlrows[i]);
+			var tableRow = document.getElementById("ilvlTable").rows[i];
+			tableRow = ilvlrows[i];
 		}
 		return false;
 	})
