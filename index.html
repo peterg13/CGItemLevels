@@ -81,7 +81,7 @@
 			for(j = 0; j < ilvlrows.length-1; j++){
 				console.log("second loop length" + ilvlrows.length);
 				console.log("ilvlrows[j].cells[1]: " + ilvlrows[j].cells[1] + ", ilvlrows[j+1].cells[1]: " + ilvlrows[j+1].cells[1]);
-				if(ilvlrows[j].cells[1] < ilvlrows[j+1].cells[1]){
+				if(ilvlrows[j].cells[1].innerHTML < ilvlrows[j+1].cells[1].innerHTML){
 					$("#ilvlTable tbody").children().eq(j).next().after($("#ilvlTable tbody").children().eq(j));
 				}
 			}
