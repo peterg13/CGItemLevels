@@ -173,10 +173,16 @@ app.post('/removeCharacter', function (req, res){
 var characterRequest = function(charName, charRealm, callback){
 	const blizzard = require('blizzard.js').initialize({ apikey: 'ce8c5e2zj8t8q2ebjck9y73usfp2zpt9'});
 
-	blizzard.wow.character(['items'], { origin: 'us', realm: charRealm, name: charName })
-  		.then(response => {
-    	//returns the Item Level
-    	callback({equippedilvl: response.data.items.averageItemLevelEquipped, totalilvl: response.data.items.averageItemLevel, class: response.data.class});
-    	
-  });
+	try{
+
+		blizzard.wow.character(['items'], { origin: 'us', realm: charRealm, name: charName })
+			.then(response => {
+			//returns the Item Level
+			callback({equippedilvl: response.data.items.averageItemLevelEquipped, totalilvl: response.data.items.averageItemLevel, class: response.data.class});
+			
+		});
+	}
+	catch(err){
+		console.log(err);
+	}
 }
