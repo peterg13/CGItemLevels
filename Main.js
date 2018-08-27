@@ -183,6 +183,7 @@ var characterRequest = function(charName, charRealm, callback){
 		});
 	}
 	catch(err){
+		console.log('error from character request');
 		console.log(err);
 	}
 }
