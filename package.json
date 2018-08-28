@@ -8,13 +8,13 @@
   },
   "main": "Main.js",
   "dependencies": {
-    "async": "^2.5.0",
-    "aws-sdk": "^2.116.0",
-    "blizzard.js": "^1.7.0",
-    "body-parser": "^1.17.2",
-    "express": "^4.15.4",
-    "jquery": "^3.2.1",
-    "jquery-csv": "^0.8.1"
+    "async": "^2.6.1",
+    "aws-sdk": "^2.303.0",
+    "blizzard.js": "^2.3.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "jquery-csv": "^0.8.9"
   },
   "devDependencies": {},
   "scripts": {
