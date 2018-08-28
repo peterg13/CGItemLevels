@@ -180,7 +180,7 @@ var characterRequest = function(charName, charRealm, callback){
 			//returns the Item Level
 			callback({equippedilvl: response.data.items.averageItemLevelEquipped, totalilvl: response.data.items.averageItemLevel, class: response.data.class});
 			
-		});
+		}).catch(error => console.log('error'));
 	}
 	catch(err){
 		console.log('error from character request');
