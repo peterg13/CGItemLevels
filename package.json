@@ -9,7 +9,7 @@
   "main": "Main.js",
   "dependencies": {
     "async": "^2.6.1",
-    "aws-sdk": "^2.303.0",
+    "aws-sdk": "^2.340.0",
     "blizzard.js": "^2.3.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
