@@ -115,11 +115,33 @@ img{
   height: auto;
 }
 
+#menuButtons{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  left: 50%;
+  margin: 50px;
+  margin-left: 60px;
+}
+
+#refreshButton{
+  flex: 1;
+  background: black;
+}
+.menu-buttons{
+  margin: 5px;
+  flex: 1;
+  background: black;
+  color: white;
+  box-shadow: 1px 1px 50px #000;
+}
+
 #addAndRemove{
   position: absolute;
   left: 50%;
   margin: 50px;
-  margin-left: 100px;
+  margin-left: 300px;
 
 }
 
