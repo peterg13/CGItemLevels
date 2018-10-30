@@ -108,6 +108,18 @@
 	})
 	</script>
 	
+	<!--when minus button is clicked.  will cause remove buttons to appear on each character -->
+	<script>
+		$("#rmvbutton").on("click",function(){
+			var table = $("#ilvlTable tbody")[0].children
+			var rowLength = table[0].children.length
+			let newButton = $("<button/>").text("btn");
+			for(i = 0; i < table.length; i++){
+				table[i].children[rowLength - 1].append(newButton)
+    }
+		})
+		</script>
+
 	<script>
 	$("#removeButton").on("click",function(){
 		var name = document.getElementById("charNameToRemove").value;
